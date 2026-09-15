@@ -4,7 +4,7 @@
   "posterImage": "/poster.png",
   "heroImage": "/og-image.png",
   "fieldImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuD3Dw9_T3a6btuRuRkANBOMcNnz6WRyFh20xVpqW0jxhOmzwC32_8pJImqgZdC6CL6qTEXSIHqfJaHkdeKJLv0GaAMITyAdZzTIauxA-n-I92C91S4itBV-a1igfmJiZB3WwEmKU0bGjgcfiw8hzJsaVGNVjV8wGnccd55-DqZMkcEzqABi5T70sl1UQlLQikUakBYqgWa5_wfo5amlnFP9_SFxWAf726blNkeJs1tyKZFu3WiiXvc",
-  "organizerLabel": "서산시 · 한국물새네트워크",
+  "organizerLabel": "(사)한국물새네트워크",
   "applicationPeriodBadge": "접수 기간: 9. 20.(일) ~ 9. 30.(수) 선착순",
   "heroDescription": "세계적인 철새 도래지 서산 천수만의 광활한 갈대밭과 호수에서 펼쳐지는 생태 탐조 레이스! 초보자도 전문가이드와 함께 참여하실 수 있습니다.",
   "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLScDUBVYSAUImVVe3m341X0LsmDeHBMZ-39A4qjTiKSmja_EXg/viewform?embedded=true",
@@ -14,7 +14,7 @@
     "location": "서산버드랜드 & 천수만 일원",
     "participants": "총 20개팀 선착순 (팀당 3~5명)",
     "fee": "1인 40,000원 (4식·숙박 포함)",
-    "host": "서산시청 · (사)한국물새네트워크",
+    "host": "서산시청, (사)한국물새네트워크",
     "account": "KEB하나은행 162-910011-88404",
     "accountHolder": "(사)한국물새네트워크",
     "contact": "02-734-0678",
@@ -47,9 +47,9 @@
     "간월도 일대 숙박 (1박)",
     "참가 기념품 및 시상 상품",
     "국내 여행자보험 가입",
-    "전문 조류 가이드 해설 및 차량 주유비 지원"
+    "전문 조류 가이드 해설 및 탐조차량 주유비 지원"
   ],
-  "transportNote": "집합: 서산 버드랜드 둥지전망대 (주차 후 도보 10분 소요) / 이동: 팀별 차량 1대 운행 (가이드 동승 지원, 대중교통 이용 시 가이드 차량 탑승 요청 가능)",
+  "transportNote": "집합: 서산 버드랜드 둥지전망대 (주차 후 도보 10분 소요) / 이동: 탐조진행차량이 아닌 경우에는 버드랜드 주차장에 주차함",
   "feeOptions": [
     { "value": "4", "label": "4명 (권장 정규팀 - 160,000원)" },
     { "value": "3", "label": "3명 (120,000원)" },
