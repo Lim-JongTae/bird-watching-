@@ -1,15 +1,19 @@
 <template>
   <section class="relative overflow-hidden bg-brand-green text-white">
     <!-- Hero Image -->
-    <div class="relative h-60 w-full overflow-hidden">
+    <div class="relative h-64 w-full overflow-hidden">
       <img
         :alt="title"
-        class="w-full h-full object-cover object-bottom transform scale-110"
+        class="w-full h-full object-cover object-bottom animate-ken-burns origin-bottom transition-transform duration-1000"
         :src="heroImage"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-brand-green via-brand-green/40 to-transparent"></div>
+      <!-- Dynamic Light & Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-green via-brand-green/30 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-0 bg-radial-gradient from-amber-400/10 to-transparent mix-blend-overlay animate-pulse pointer-events-none"></div>
+      
       <div class="absolute top-3 left-4">
-        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-black/60 text-amber-300 badge-blur border border-amber-300/30">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-black/60 text-amber-300 badge-blur border border-amber-300/30 shadow-md">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping mr-1.5"></span>
           🦅 생태 보전 &amp; 탐조 축제
         </span>
       </div>

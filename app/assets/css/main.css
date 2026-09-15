@@ -74,3 +74,20 @@ html {
   background-color: var(--color-brand-orange);
   color: white;
 }
+
+/* ── Ken Burns dynamic image zoom & pan ── */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.18) translate(-1%, -2%);
+  }
+  100% {
+    transform: scale(1.05) translate(0, 0);
+  }
+}
+.animate-ken-burns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+}
+
