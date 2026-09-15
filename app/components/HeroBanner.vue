@@ -4,7 +4,7 @@
     <div class="relative h-60 w-full overflow-hidden">
       <img
         :alt="title"
-        class="w-full h-full object-cover object-center transform scale-105"
+        class="w-full h-full object-cover object-bottom transform scale-110"
         :src="heroImage"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-brand-green via-brand-green/40 to-transparent"></div>
