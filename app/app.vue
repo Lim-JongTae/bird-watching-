@@ -105,15 +105,22 @@ function scrollToForm() {
   }
 }
 
-// SEO
-useHead({
-  title: `${eventData.value.title} - 참가 신청`,
-  meta: [
-    { name: 'description', content: eventData.value.heroDescription },
-    { property: 'og:title', content: `${eventData.value.title} - 참가 신청` },
-    { property: 'og:description', content: eventData.value.heroDescription },
-    { property: 'og:image', content: eventData.value.heroImage },
-    { property: 'og:type', content: 'website' }
-  ]
+// SEO & Open Graph (KakaoTalk preview)
+useSeoMeta({
+  title: '2026 서산 천수만 탐조대회',
+  description: '서산 천수만에서 펼쳐지는 국내 최대 탐조 행사! 가창오리 군무 감상 & 전담 가이드 제공 (선착순 20팀)',
+  ogTitle: '2026 서산 천수만 탐조대회',
+  ogDescription: '서산 천수만에서 펼쳐지는 국내 최대 탐조 행사! 가창오리 군무 감상 & 전담 가이드 제공 (선착순 20팀)',
+  ogImage: 'https://bird-watching-xi.vercel.app/og-image.png',
+  ogImageUrl: 'https://bird-watching-xi.vercel.app/og-image.png',
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  ogUrl: 'https://bird-watching-xi.vercel.app/',
+  ogType: 'website',
+  ogSiteName: '2026 서산 천수만 탐조대회',
+  twitterCard: 'summary_large_image',
+  twitterTitle: '2026 서산 천수만 탐조대회',
+  twitterDescription: '서산 천수만에서 펼쳐지는 국내 최대 탐조 행사! 가창오리 군무 감상 & 전담 가이드 제공 (선착순 20팀)',
+  twitterImage: 'https://bird-watching-xi.vercel.app/og-image.png'
 })
 </script>
