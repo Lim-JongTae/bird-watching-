@@ -16,10 +16,14 @@
       </span>
 
       <a
-        class="text-xs bg-amber-500 hover:bg-amber-600 text-white font-medium px-2.5 py-1 rounded-full transition-colors cursor-pointer"
+        class="text-xs font-semibold px-2.5 py-1 rounded-full transition-colors cursor-pointer flex items-center gap-1"
+        :class="isOpen 
+          ? 'bg-amber-500 hover:bg-amber-600 text-white' 
+          : 'bg-stone-800/80 hover:bg-stone-800 text-amber-300 border border-amber-400/30'"
         @click="$emit('scrollToForm')"
       >
-        신청서 작성
+        <span v-if="!isOpen">🔒</span>
+        {{ isOpen ? '신청서 작성' : '9/20 접수 오픈' }}
       </a>
     </div>
   </header>
@@ -27,14 +31,20 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useApplicationStatus } from '~/composables/useApplicationStatus'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   organizerLabel: string
   registeredTeams: number | null
   maxTeams: number
-}>()
+  startDate?: string
+}>(), {
+  startDate: '2026-09-20T00:00:00+09:00'
+})
 
 defineEmits(['scrollToForm'])
+
+const { isOpen } = useApplicationStatus(props.startDate)
 
 const badgeClass = computed(() => {
   if (props.registeredTeams === null) return ''

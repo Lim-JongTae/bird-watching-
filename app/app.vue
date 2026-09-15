@@ -7,6 +7,7 @@
         :organizer-label="eventData.organizerLabel"
         :registered-teams="teamCount"
         :max-teams="20"
+        :start-date="eventData.overview.applicationStartDate"
         @scroll-to-form="scrollToForm"
       />
 
@@ -48,6 +49,7 @@
         <!-- ApplicationForm (Google Form iframe) -->
         <ApplicationForm
           :form-url="eventData.googleFormUrl"
+          :start-date="eventData.overview.applicationStartDate"
         />
 
         <!-- SiteFooter -->
@@ -62,7 +64,10 @@
       </main>
 
       <!-- FloatingCTA -->
-      <FloatingCTA @scroll-to-form="scrollToForm" />
+      <FloatingCTA
+        :start-date="eventData.overview.applicationStartDate"
+        @scroll-to-form="scrollToForm"
+      />
     </div>
 
 
