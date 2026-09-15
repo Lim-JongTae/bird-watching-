@@ -1,0 +1,90 @@
+{
+  "title": "2026 서산 천수만 탐조대회",
+  "subtitle": "국제탐조대회로 나아가는 특별한 생태 여행",
+  "posterImage": "/poster.png",
+  "heroImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAM2x5faKIjM7HMkDdB8P459GzPYzkiiw95f6qajDKMwoVMvcvaZ5tHxJfgO3oa6YvAR_L7LxNPbj0nFvD9EhqU6sddUt6FXqO_wku4xgCr6alCV7xACGamapIwq07layM4M_BiFSYkJx-vu9qxsW1Fslq5OgmBSxIZaOXEmv4SmSnZxnLsBsngVSJq8KJu6jy5aeklpniYGQxahHs0fOcWwTx3DybuCoVQhuik_7B3yCwoZRQelas",
+  "fieldImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuD3Dw9_T3a6btuRuRkANBOMcNnz6WRyFh20xVpqW0jxhOmzwC32_8pJImqgZdC6CL6qTEXSIHqfJaHkdeKJLv0GaAMITyAdZzTIauxA-n-I92C91S4itBV-a1igfmJiZB3WwEmKU0bGjgcfiw8hzJsaVGNVjV8wGnccd55-DqZMkcEzqABi5T70sl1UQlLQikUakBYqgWa5_wfo5amlnFP9_SFxWAf726blNkeJs1tyKZFu3WiiXvc",
+  "organizerLabel": "서산시 · 한국물새네트워크",
+  "applicationPeriodBadge": "접수 기간: 9. 20.(일) ~ 9. 30.(수) 선착순",
+  "heroDescription": "세계적인 철새 도래지 서산 천수만의 광활한 갈대밭과 호수에서 펼쳐지는 생태 탐조 레이스! 초보자도 전문가이드와 함께 참여하실 수 있습니다.",
+  "googleFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLScDUBVYSAUImVVe3m341X0LsmDeHBMZ-39A4qjTiKSmja_EXg/viewform?embedded=true",
+  "noticeText": "내년부터는 국제탐조대회로 확대 운영될 예정입니다!",
+  "overview": {
+    "dates": "10. 24.(토) ~ 10. 25.(일) [1박2일]",
+    "location": "서산버드랜드 & 천수만 일원",
+    "participants": "총 20개팀 선착순 (팀당 3~5명)",
+    "fee": "1인 40,000원 (4식·숙박 포함)",
+    "host": "서산시청 · (사)한국물새네트워크",
+    "account": "KEB하나은행 162-910011-88404",
+    "accountHolder": "(사)한국물새네트워크",
+    "contact": "02-734-0678",
+    "email": "wnkorea@daum.net",
+    "applicationPeriod": "9월 20일 ~ 9월 30일"
+  },
+  "programFeatures": [
+    {
+      "icon": "🔭",
+      "iconBg": "emerald",
+      "title": "최다 종 관찰 순위 경쟁",
+      "description": "정해진 시간 동안 가장 많은 종류의 야생 조류를 동정하고 관찰·기록한 팀 순으로 순위를 가립니다."
+    },
+    {
+      "icon": "🎒",
+      "iconBg": "amber",
+      "title": "초보팀 전담 가이드 & 장비 대여",
+      "description": "초보팀도 걱정 없습니다! 전문 탐조 가이드 동승 해설과 함께 고성능 쌍안경 및 필드스코프 관찰 기회를 지원합니다."
+    },
+    {
+      "icon": "🏆",
+      "iconBg": "orange",
+      "title": "우수팀 시상 & 가족·열정 특별상",
+      "description": "우수 성적 탐조팀 시상 및 부상 수여 외에도, 적극적으로 참여한 가족팀과 열정팀을 위한 다채로운 특별상이 마련되어 있습니다."
+    }
+  ],
+  "benefits": [
+    "식사 4식 (점심 2식, 저녁 1식, 조식 1식)",
+    "간월도 일대 숙박 (1박)",
+    "참가 기념품 및 시상 상품",
+    "국내 여행자보험 가입",
+    "전문 조류 가이드 해설 및 차량 주유비 지원"
+  ],
+  "transportNote": "집합: 서산 버드랜드 둥지전망대 (주차 후 도보 10분 소요) / 이동: 팀별 차량 1대 운행 (가이드 동승 지원, 대중교통 이용 시 가이드 차량 탑승 요청 가능)",
+  "feeOptions": [
+    { "value": "4", "label": "4명 (권장 정규팀 - 160,000원)" },
+    { "value": "3", "label": "3명 (120,000원)" },
+    { "value": "5", "label": "5명 (200,000원)" },
+    { "value": "2", "label": "2명 (80,000원 / 개별팀 연합)" },
+    { "value": "1", "label": "1명 (40,000원 / 개별팀 연합)" }
+  ],
+  "teamTypes": ["가족팀", "단체팀", "개별팀", "기타"],
+  "carOptions": [
+    { "value": "자차운행", "label": "자차 1대 참가팀 직접 운행 (가이드 1명 동승 가능)" },
+    { "value": "가이드차량요청", "label": "대중교통 이용으로 가이드 차량 탑승 요청" }
+  ],
+  "schedule": [
+    {
+      "day": "1일차",
+      "date": "10월 24일 (토요일)",
+      "color": "green",
+      "items": [
+        { "time": "11:00 ~ 12:00", "title": "참가 접수 및 오리엔테이션", "location": "버드랜드 둥지전망대 1층", "highlight": false },
+        { "time": "12:00 ~ 13:00", "title": "점심식사", "location": "크라운파머스 (주차장 인근)", "highlight": false },
+        { "time": "13:00 ~ 18:00", "title": "제1일차 천수만 필드 탐조", "location": "서산 천수만 일원 (팀별/가이드 차량 이동)", "highlight": true, "highlightColor": "amber" },
+        { "time": "18:00 ~ 19:00", "title": "버드랜드 도착 및 저녁식사", "location": "둥지전망대 인근 야외식당", "highlight": false },
+        { "time": "19:00 ~ 20:30", "title": "전문가 탐조 강의 & 사진전", "location": "버드랜드 둥지전망대 1층 세미나실", "highlight": false },
+        { "time": "20:30 ~", "title": "숙소 이동 및 휴식 / 취침", "location": "간월도 일대 숙소 지정 배정", "highlight": false }
+      ]
+    },
+    {
+      "day": "2일차",
+      "date": "10월 25일 (일요일)",
+      "color": "lightgreen",
+      "items": [
+        { "time": "06:00 ~ 07:00", "title": "조식 식사", "location": "도시락 형태 제공 (이른 아침 탐조 준비)", "highlight": false },
+        { "time": "07:00 ~ 12:00", "title": "제2일차 천수만 새벽·오전 탐조", "location": "서산 천수만 일원", "highlight": true, "highlightColor": "emerald" },
+        { "time": "12:00 ~ 13:30", "title": "점심식사 및 탐조 기록지 제출", "location": "크라운파머스 (주차장 인근)", "highlight": false },
+        { "time": "13:30 ~ 15:00", "title": "생태 탐조 퀴즈 & 시상식 / 폐회", "location": "버드랜드 둥지전망대", "highlight": false }
+      ]
+    }
+  ]
+}
