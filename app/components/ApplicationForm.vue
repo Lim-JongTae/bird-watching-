@@ -5,21 +5,42 @@
       <div class="border-b border-stone-100 pb-3 mb-4">
         <div
           class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold mb-2"
-          :class="isOpen ? 'bg-emerald-50 text-emerald-800' : 'bg-amber-50 text-amber-900 border border-amber-200'"
+          :class="badgeStyleClass"
         >
-          <span class="w-2 h-2 rounded-full" :class="isOpen ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500 animate-pulse'"></span>
-          {{ isOpen ? 'Google 스프레드시트 실시간 자동 접수 연동' : '9월 20일(일) 00시 접수 오픈 예정' }}
+          <span class="w-2 h-2 rounded-full" :class="badgeDotClass"></span>
+          {{ badgeText }}
         </div>
         <h2 class="text-lg font-black text-stone-900">
           참가 신청서 작성
         </h2>
         <p class="text-xs text-stone-500 mt-0.5">
-          선착순 20팀(80명) 마감시 조기 종료될 수 있습니다.
+          선착순 {{ maxTeams }}팀 마감 시 온라인 접수가 자동으로 조기 종료됩니다.
         </p>
       </div>
 
-      <!-- If NOT open: Locked & Countdown Notice Card -->
-      <div v-if="!isOpen" class="py-8 px-4 text-center bg-stone-50 rounded-xl border border-stone-200/80">
+      <!-- Case 1: CLOSED (Capacity Full or Closed) -->
+      <div v-if="isClosed" class="py-8 px-4 text-center bg-rose-50/60 rounded-xl border border-rose-200/80">
+        <div class="w-14 h-14 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner text-2xl">
+          🚫
+        </div>
+        <h3 class="text-lg font-black text-rose-950 mb-1">
+          참가 신청이 마감되었습니다
+        </h3>
+        <p class="text-xs text-rose-800 mb-4 leading-relaxed max-w-xs mx-auto">
+          선착순 정원(<b class="font-bold text-rose-900">{{ maxTeams }}팀</b>)이 모두 접수되어 온라인 신청서 작성이 종료되었습니다.
+        </p>
+
+        <div class="inline-flex items-center gap-2 bg-rose-900 text-rose-100 text-xs px-4 py-2.5 rounded-xl shadow-sm">
+          <span>접수 결과: <b class="text-amber-300">{{ registeredTeams !== null ? registeredTeams : maxTeams }}</b> / {{ maxTeams }}팀 (마감)</span>
+        </div>
+
+        <p class="text-[11px] text-stone-600 bg-white border border-rose-200/60 rounded-lg p-3 mt-4 max-w-sm mx-auto font-medium leading-relaxed shadow-xs">
+          📞 취소 표 발생에 따른 결원 대기 문의는 대회 사무국(<b class="text-stone-900">02-734-0678</b>)으로 문의해 주시기 바랍니다.
+        </p>
+      </div>
+
+      <!-- Case 2: UPCOMING (Locked & Countdown Notice Card) -->
+      <div v-else-if="isUpcoming" class="py-8 px-4 text-center bg-stone-50 rounded-xl border border-stone-200/80">
         <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner text-2xl">
           🔒
         </div>
@@ -59,7 +80,7 @@
         </p>
       </div>
 
-      <!-- If open: Show Notice Banner & Google Form iframe -->
+      <!-- Case 3: OPEN (Show Notice Banner & Google Form iframe) -->
       <template v-else>
         <!-- Notice Banner for submission delay -->
         <div class="mb-3 px-3 py-2 bg-amber-50 border border-amber-200/60 rounded-xl flex items-start gap-2 text-xs text-amber-900">
@@ -148,17 +169,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useApplicationStatus } from '~/composables/useApplicationStatus'
+import { ref, computed, onMounted, onUnmounted, toRef } from 'vue'
+import { useApplicationStatus, type TestStatusOverride } from '~/composables/useApplicationStatus'
 
 const props = withDefaults(defineProps<{
   formUrl: string
   startDate?: string
+  registeredTeams?: number | null
+  maxTeams?: number
+  forceStatus?: TestStatusOverride
 }>(), {
-  startDate: '2026-09-20T00:00:00+09:00'
+  startDate: '2026-09-20T00:00:00+09:00',
+  registeredTeams: null,
+  maxTeams: 20,
+  forceStatus: 'AUTO'
 })
 
-const { isOpen, days, hours, minutes, seconds } = useApplicationStatus(props.startDate)
+const { isOpen, isClosed, isUpcoming, days, hours, minutes, seconds } = useApplicationStatus(
+  toRef(props, 'startDate'),
+  toRef(props, 'registeredTeams'),
+  toRef(props, 'maxTeams'),
+  toRef(props, 'forceStatus')
+)
+
+const badgeStyleClass = computed(() => {
+  if (isClosed.value) return 'bg-rose-50 text-rose-800 border border-rose-200'
+  if (isOpen.value) return 'bg-emerald-50 text-emerald-800'
+  return 'bg-amber-50 text-amber-900 border border-amber-200'
+})
+
+const badgeDotClass = computed(() => {
+  if (isClosed.value) return 'bg-rose-500'
+  if (isOpen.value) return 'bg-emerald-500 animate-pulse'
+  return 'bg-amber-500 animate-pulse'
+})
+
+const badgeText = computed(() => {
+  if (isClosed.value) return '선착순 정원 마감 완료 (구글 폼 비활성화)'
+  if (isOpen.value) return 'Google 스프레드시트 실시간 자동 접수 연동'
+  return '9월 20일(일) 00시 접수 오픈 예정'
+})
 
 const isLoading = ref(true)
 const iframeHeight = ref(1200)

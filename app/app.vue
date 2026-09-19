@@ -1,13 +1,14 @@
 <template>
-  <div class="min-h-screen bg-[var(--color-page-bg)] antialiased">
+  <div class="min-h-screen bg-[var(--color-page-bg)] antialiased relative">
     <!-- Mobile Container Wrapper -->
     <div class="mobile-container flex flex-col pb-28">
       <!-- TopBar -->
       <TopBar
         :organizer-label="eventData.organizerLabel"
         :registered-teams="teamCount"
-        :max-teams="20"
+        :max-teams="maxTeams"
         :start-date="eventData.overview.applicationStartDate"
+        :force-status="forceStatus"
         @scroll-to-form="scrollToForm"
       />
 
@@ -20,7 +21,7 @@
           :description="eventData.heroDescription"
           :dates="eventData.overview.dates"
           :location="eventData.overview.location"
-          :participants="eventData.overview.participants"
+          :participants="`총 ${maxTeams}개팀 선착순 (팀당 3~5명)`"
           :fee="eventData.overview.fee"
         />
 
@@ -46,10 +47,13 @@
           :transport-note="eventData.transportNote"
         />
 
-        <!-- ApplicationForm (Google Form iframe) -->
+        <!-- ApplicationForm (Google Form iframe / Closed notice) -->
         <ApplicationForm
           :form-url="eventData.googleFormUrl"
           :start-date="eventData.overview.applicationStartDate"
+          :registered-teams="teamCount"
+          :max-teams="maxTeams"
+          :force-status="forceStatus"
         />
 
         <!-- SiteFooter -->
@@ -66,32 +70,51 @@
       <!-- FloatingCTA -->
       <FloatingCTA
         :start-date="eventData.overview.applicationStartDate"
+        :registered-teams="teamCount"
+        :max-teams="maxTeams"
+        :force-status="forceStatus"
         @scroll-to-form="scrollToForm"
       />
+
+      <!-- Interactive Test Control Panel (Visible only in Development mode) -->
+      <TestController
+        v-if="isDev"
+        :initial-teams="teamCount"
+        :initial-max-teams="maxTeams"
+        :start-date="eventData.overview.applicationStartDate"
+        @update:teams="teamCount = $event"
+        @update:maxTeams="maxTeams = $event"
+        @update:forceStatus="forceStatus = $event"
+      />
     </div>
-
-
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import eventDataJson from '~/data/event.json'
+import type { TestStatusOverride } from '~/composables/useApplicationStatus'
 
+const isDev = import.meta.dev
 const eventData = ref(eventDataJson)
 
-// Fetch team count from server API (polls every 30s)
+const maxTeams = ref<number>(eventDataJson.overview.maxTeams || 20)
 const teamCount = ref<number | null>(null)
+const forceStatus = ref<TestStatusOverride>('AUTO')
+
 let pollTimer: ReturnType<typeof setInterval> | null = null
 
 async function fetchTeamCount() {
   try {
-    const data = await $fetch<{ registeredTeams: number; status: string }>('/api/team-count')
+    const data = await $fetch<{ registeredTeams: number; maxTeams?: number; status: string }>('/api/team-count')
     if (data.status === 'ok') {
-      teamCount.value = data.registeredTeams
+      // If user hasn't modified simulated team count manually, use fetched value
+      if (teamCount.value === null) {
+        teamCount.value = data.registeredTeams
+      }
     }
   } catch {
-    // Silently fail — badge simply won't show
+    // Silently fail
   }
 }
 
@@ -103,6 +126,7 @@ onMounted(() => {
 onUnmounted(() => {
   if (pollTimer) clearInterval(pollTimer)
 })
+
 function scrollToForm() {
   const el = document.getElementById('apply-section')
   if (el) {
@@ -110,7 +134,7 @@ function scrollToForm() {
   }
 }
 
-// SEO & Open Graph (KakaoTalk preview)
+// SEO & Open Graph
 useSeoMeta({
   title: '2026 서산 천수만 탐조대회',
   description: '서산 천수만에서 펼쳐지는 국내 최대 탐조 행사! 가창오리 군무 감상 & 전담 가이드 제공 (선착순 20팀)',
@@ -129,3 +153,4 @@ useSeoMeta({
   twitterImage: 'https://bird-watching-xi.vercel.app/og-image.png'
 })
 </script>
+

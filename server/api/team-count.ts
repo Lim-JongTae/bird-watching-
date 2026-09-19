@@ -1,20 +1,15 @@
-// Google Sheets team count API
-// Fetches the number of registered teams from a published Google Sheet
-//
-// Setup:
-// 1. Google Form 응답 스프레드시트 열기
-// 2. 파일 > 공유 > 웹에 게시 > 게시 클릭
-// 3. .env 파일에 GOOGLE_SHEET_ID / GOOGLE_SHEET_GID 설정
+import eventDataJson from '~/data/event.json'
 
 export default defineEventHandler(async () => {
   const config = useRuntimeConfig()
   const sheetId = config.googleSheetId
   const sheetGid = config.googleSheetGid || '0'
+  const maxTeams = eventDataJson.overview?.maxTeams || 20
 
   if (!sheetId) {
     return {
       registeredTeams: 0,
-      maxTeams: 20,
+      maxTeams,
       updatedAt: new Date().toISOString(),
       status: 'not_configured'
     }
@@ -34,7 +29,7 @@ export default defineEventHandler(async () => {
 
     return {
       registeredTeams: teamCount,
-      maxTeams: 20,
+      maxTeams,
       updatedAt: new Date().toISOString(),
       status: 'ok'
     }
@@ -42,10 +37,11 @@ export default defineEventHandler(async () => {
     console.error('[team-count] Failed to fetch Google Sheet:', error)
     return {
       registeredTeams: 0,
-      maxTeams: 20,
+      maxTeams,
       updatedAt: new Date().toISOString(),
       status: 'error',
       message: error instanceof Error ? error.message : 'Unknown error'
     }
   }
 })
+
