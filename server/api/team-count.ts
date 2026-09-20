@@ -25,7 +25,7 @@ export default defineEventHandler(async () => {
 
     // Count rows (subtract 1 for header row)
     const lines = response.trim().split('\n').filter((line: string) => line.trim() !== '')
-    const teamCount = Math.max(0, lines.length - 1)
+    const teamCount = Math.max(0, lines.length - 2)
 
     return {
       registeredTeams: teamCount,
